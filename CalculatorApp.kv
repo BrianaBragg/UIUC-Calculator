@@ -1,0 +1,133 @@
+<Button>
+    size_hint: (0.2, 0.2) # maintain button size ratio
+    background_normal: '' # empty string '' this adds a color to it from the tint of black or white
+    background_color:(2/100, 10/100, 24/100, 1) # black and white tint, and opacity 1.
+
+<CalculatorWidget>
+    BoxLayout
+        orientation: "vertical"
+        size: root.width, root.height
+
+        TextInput:
+            id: input_box
+            text: "0" # initial number that shows on calc.
+            font_size: 63
+            multiline: False
+            halign: "right"
+            size_hint: (1, 0.19) # take 100 percent of width (1) and 19 percent (0.19) of the height.
+            background_color: (1, 1, 1, 1) # turns the top part white where the number shows. the fourth number is the opacity. 1 would give out full color.
+            foreground_color: (0, 0, 0, 1) # color for number on top (black)
+
+        GridLayout:
+            cols: 4 # columns go DOWN
+            rows: 5 # rows go ACROSS
+
+            #### row 1 ####
+            Button:
+                text:"%"
+                font_size: 50
+                on_press: root.signs("%") # text input only take string.. string the calculation
+
+            Button:
+                text: "C"
+                font_size: 50
+                on_press: root.clear() # clicking it will clear everything "root clear" clear method
+
+            Button:
+                text: u"\u00AB" # code for delete button
+                font_size: 50
+                on_press: root.remove_last()
+
+            Button:
+                text: "/"
+                font_size: 50
+                background_color: (232/255, 116/255, 21/255, 1)
+                on_press: root.signs("/")
+
+            #### row 2 ####
+            Button:
+                text: "7"
+                font_size: 50
+                on_press: root.button_value(7)
+
+            Button:
+                text: "8"
+                font_size: 50
+                on_press: root.button_value(8)
+
+            Button:
+                text: "9"
+                font_size: 50
+                on_press: root.button_value(9)
+
+            Button:
+                text: "x"
+                font_size: 50
+                background_color: (232/255, 116/255, 21/255, 1)
+                on_press: root.signs("*") # * for calc. multiplication
+
+            #### row 3 ####
+            Button:
+                text: "4"
+                font_size: 50
+                on_press: root.button_value(4)
+
+            Button:
+                text: "5"
+                font_size: 50
+                on_press: root.button_value(5)
+
+            Button:
+                text: "6"
+                font_size: 50
+                on_press: root.button_value(6)
+
+            Button:
+                text: "-"
+                font_size: 50
+                background_color: (232/255, 116/255, 21/255, 1)
+                on_press: root.signs("-")
+
+            #### row 4 ####
+            Button:
+                text: "1"
+                font_size: 50
+                on_press: root.button_value(1)
+
+            Button:
+                text: "2"
+                font_size: 50
+                on_press: root.button_value(2)
+
+            Button:
+                text: "3"
+                font_size: 50
+                on_press: root.button_value(3)
+
+            Button:
+                text: "+"
+                font_size: 50
+                background_color: (232/255, 116/255, 21/255, 1)
+                on_press: root.signs("+")
+
+            #### row 5 ####
+            Button:
+                text: "+/-"
+                font_size: 50
+                on_press: root.positive_negative()
+
+            Button:
+                text: "0"
+                font_size: 50
+                on_press: root.button_value(0)
+
+            Button:
+                text: "."
+                font_size: 50
+                on_press: root.dot()
+
+            Button:
+                text: "="
+                font_size: 50
+                background_color: (232/255, 116/255, 21/255, 1)
+                on_press: root.results()
